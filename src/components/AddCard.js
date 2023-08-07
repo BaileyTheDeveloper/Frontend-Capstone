@@ -39,6 +39,10 @@ function AddCard() {
 
 	async function handleSubmit(event) {
 		event.preventDefault();
+		if (!newCard.front.trim() || !newCard.back.trim()) {
+			alert("Please fill in both the front and back of the card.");
+			return;
+		}
 		const abortController = new AbortController();
 		const response = await createCard(
 			deckId,
